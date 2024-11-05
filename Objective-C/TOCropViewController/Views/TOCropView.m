@@ -965,6 +965,7 @@ typedef NS_ENUM(NSInteger, TOCropViewOverlayEdge) {
 - (void)setCropBoxResizeEnabled:(BOOL)panResizeEnabled {
     _cropBoxResizeEnabled = panResizeEnabled;
     self.gridPanGestureRecognizer.enabled = _cropBoxResizeEnabled;
+    [_gridOverlayView setCornersHidden:!panResizeEnabled];
 }
 
 - (void)setCropBoxFrame:(CGRect)cropBoxFrame
