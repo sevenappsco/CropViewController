@@ -51,7 +51,7 @@ public typealias CropViewCroppingStyle = TOCropViewCroppingStyle
      @param cropRect A rectangle indicating the crop region of the image the user chose (In the original image's local co-ordinate space)
      @param angle The angle of the image when it was cropped
      */
-    @objc optional func cropViewController(_ cropViewController: CropViewController, didCropImageToRect cropRect: CGRect, angle: Int)
+    @objc optional func cropViewController(_ cropViewController: ImageCropViewController, didCropImageToRect cropRect: CGRect, angle: Int)
     
     /**
      Called when the user has committed the crop action, and provides
@@ -61,7 +61,7 @@ public typealias CropViewCroppingStyle = TOCropViewCroppingStyle
      @param cropRect A rectangle indicating the crop region of the image the user chose (In the original image's local co-ordinate space)
      @param angle The angle of the image when it was cropped
      */
-    @objc optional func cropViewController(_ cropViewController: CropViewController, didCropToImage image: UIImage, withRect cropRect: CGRect, angle: Int)
+    @objc optional func cropViewController(_ cropViewController: ImageCropViewController, didCropToImage image: UIImage, withRect cropRect: CGRect, angle: Int)
     
     /**
      If the cropping style is set to circular, implementing this delegate will return a circle-cropped version of the selected
@@ -71,7 +71,7 @@ public typealias CropViewCroppingStyle = TOCropViewCroppingStyle
      @param cropRect A rectangle indicating the crop region of the image the user chose (In the original image's local co-ordinate space)
      @param angle The angle of the image when it was cropped
      */
-    @objc optional func cropViewController(_ cropViewController: CropViewController, didCropToCircularImage image: UIImage, withRect cropRect: CGRect, angle: Int)
+    @objc optional func cropViewController(_ cropViewController: ImageCropViewController, didCropToCircularImage image: UIImage, withRect cropRect: CGRect, angle: Int)
     
     /**
      If implemented, when the user hits cancel, or completes a
@@ -81,14 +81,14 @@ public typealias CropViewCroppingStyle = TOCropViewCroppingStyle
      @param cancelled Whether a cropping action was actually performed, or if the user explicitly hit 'Cancel'
      
      */
-    @objc optional func cropViewController(_ cropViewController: CropViewController, didFinishCancelled cancelled: Bool)
+    @objc optional func cropViewController(_ cropViewController: ImageCropViewController, didFinishCancelled cancelled: Bool)
 }
 
 // ------------------------------------------------
 /// @name Class
 // ------------------------------------------------
 
-open class CropViewController: UIViewController, TOCropViewControllerDelegate {
+open class ImageCropViewController: UIViewController, TOCropViewControllerDelegate {
     
     /**
      The original, uncropped image that was passed to this controller.
@@ -661,7 +661,7 @@ open class CropViewController: UIViewController, TOCropViewControllerDelegate {
     }
 }
 
-extension CropViewController {
+extension ImageCropViewController {
     fileprivate func setUpCropController() {
         modalPresentationStyle = .fullScreen
         addChild(toCropViewController)
